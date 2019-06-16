@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: spring-boot-dknv-logger
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: spring-boot-dknv-logger    
+  template: 
+    metadata:
+      labels:
+        app: spring-boot-dknv-logger
+    spec: 
+      containers:
+      - name: spring-boot-dknv-logger
+        image: spring-boot-dknv-logger:v1
+        ports:
+        - containerPort: 8080
+          name: server
+        - containerPort: 8081
+          name: management
+              
